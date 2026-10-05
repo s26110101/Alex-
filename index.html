@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pen</title>
+  </head>
+  <body>
+
+    <script src="./script.js"></script>
+  </body>
+</html><!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Dev Quest | 作品集入口網站</title>
+    <!-- 引入美式cortis風格/英文字型 -->
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Noto+Sans+TC:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset & 基礎設定 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #0f111a;
+            /* 美式復古點陣/網格背景 */
+            background-image: 
+                radial-gradient(#1e2338 2px, transparent 2px),
+                radial-gradient(#1e2338 2px, #0f111a 2px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            font-family: 'Noto Sans TC', sans-serif;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        /* 主要外框容器 */
+        .portfolio-container {
+            width: 100%;
+            max-width: 900px;
+            background: #181c2b;
+            border: 4px solid #ffde59; /* 美式經典亮黃粗邊框 */
+            border-radius: 28px;
+            padding: 40px 28px;
+            box-shadow: 0 12px 0px #000000, 0 0 30px rgba(255, 222, 89, 0.2);
+            text-align: center;
+            position: relative;
+        }
+
+        /* 頂部 Profile 區塊 */
+        .profile-section {
+            margin-bottom: 35px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .avatar-wrapper {
+            position: relative;
+            margin-bottom: 16px;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #ffffff;
+            box-shadow: 0 6px 0px #000000;
+            background-color: #ffde59;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .avatar-wrapper:hover .avatar {
+            transform: scale(1.08) rotate(-3deg);
+        }
+
+        .badge {
+            position: absolute;
+            bottom: 0;
+            right: -5px;
+            background: #ff3131; /* 美式跳色紅 */
+            color: #fff;
+            font-family: 'Bungee', cursive;
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 12px;
+            border: 2px solid #000;
+            box-shadow: 2px 2px 0px #000;
+        }
+
+        .user-name {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 1px;
+            text-shadow: 3px 3px 0px #000;
+            margin-bottom: 6px;
+        }
+
+        .sub-title {
+            font-family: 'Bungee', cursive;
+            color: #ffde59;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 0px #000;
+        }
+
+        /* 16 個任務按鈕的 Grid 網格佈局 */
+        .btn-grid {
+            display: grid;
+            /* 桌機版一列 2~4 個，使用 auto-fit 自動響應式適應 */
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        /* 通用按鈕基礎樣式 */
+        .quest-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            border-radius: 16px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            position: relative;
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 3px solid #000000;
+            user-select: none;
+        }
+
+        .quest-btn .btn-text {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* 【解鎖狀態按鈕】 */
+        .quest-btn.unlocked {
+            background-color: #00f0ff; /* 酷炫電光藍 */
+            color: #000000;
+            box-shadow: 0 6px 0px #000000;
+            cursor: pointer;
+        }
+
+        /* 第 2 個已解鎖按鈕換個色彩，增添美式美學多元度 */
+        .quest-btn.unlocked.alt-color {
+            background-color: #00ff66; /* 螢光毒綠 */
+        }
+
+        /* 解鎖按鈕的酷炫 Hover 效果 */
+        .quest-btn.unlocked:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 0px #000000, 0 0 15px rgba(0, 240, 255, 0.6);
+            background-color: #ffde59; /* 滑鼠懸停切換成活力黃 */
+        }
+
+        .quest-btn.unlocked.alt-color:hover {
+            box-shadow: 0 10px 0px #000000, 0 0 15px rgba(0, 255, 102, 0.6);
+        }
+
+        .quest-btn.unlocked:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0px #000000;
+        }
+
+        /* 箭頭小圖示 */
+        .quest-btn.unlocked .arrow {
+            font-family: 'Bungee', cursive;
+            font-size: 1.2rem;
+            transition: transform 0.2s ease;
+        }
+
+        .quest-btn.unlocked:hover .arrow {
+            transform: translateX(5px);
+        }
+
+        /* 【未解鎖灰階按鈕】 */
+        .quest-btn.locked {
+            background-color: #2a2f45;
+            color: #6c757d;
+            border-color: #1a1d2b;
+            box-shadow: 0 4px 0px #121520;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .quest-btn.locked .lock-icon {
+            font-size: 1.1rem;
+            filter: grayscale(100%);
+        }
+
+        /* 未解鎖懸停顫抖效果 */
+        .quest-btn.locked:hover {
+            animation: shake 0.3s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-4px); }
+            40% { transform: translateX(4px); }
+            60% { transform: translateX(-2px); }
+            80% { transform: translateX(2px); }
+        }
+
+        /* 響應式手機版調整 */
+        @media (max-width: 600px) {
+            body {
+                padding: 16px 10px;
+            }
+
+            .portfolio-container {
+                padding: 30px 16px;
+            }
+
+            .btn-grid {
+                /* 手機版單欄排列，方便大拇指點擊 */
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .user-name {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="portfolio-container">
+        <!-- 1. 中央個人資訊區塊 -->
+        <section class="profile-section">
+            <div class="avatar-wrapper">
+                <!-- 預設假圖片 (可自行更換 src 圖片網址) -->
+                <img src="https://i.postimg.cc/QdXmLdsL/9BDF2C02-639E-434F-86D3-260214D3D642-(1).jpg" alt="大頭貼" class="avatar">
+                <span class="badge">LV. 16</span>
+            </div>
+            <h1 class="user-name">Yz
+            <p class="sub-title">Web Dev Quest Portfolio</p>
+        </section>
+
+        <!-- 2. 16個關卡任務按鈕區塊 -->
+        <main class="btn-grid">
+            <!-- 按鈕 1 (已解鎖) -->
+            <a href="w1/index.html" class="quest-btn unlocked">
+                <span class="btn-text">🚀 Week 1-數位名片</span>
+                <span class="arrow">&rarr;</span>
+            </a>
+
+            <!-- 按鈕 2 (已解鎖) -->
+            <a href="w2/index.html" class="quest-btn unlocked alt-color">
+                <span class="btn-text">🍔 Week 2-今天吃甚麼？</span>
+                <span class="arrow">&rarr;</span>
+            </a>
+
+            <!-- 按鈕 3 ~ 16 (未解鎖) -->
+            <div class="quest-btn locked">
+                <span class="btn-text">Week 3-關卡未解鎖</span>
+                <span class="lock-icon">🔒</span>
+            </div>
+
+            <div class="quest-btn locked">
+                <span class="btn-text">Week 4-關卡未解鎖</span>
+                <span class="lock-icon">🔒</span>
+            </div>
+
+            <div class="quest-btn locked">
+                <span class="btn-text">Week 5-關卡未解鎖</span>
+                <span class="lock-icon">🔒</span>
+            </div>
+
+            <div class="quest-btn locked">
+                <span class="btn-text">Week 6-關卡未解鎖</span>
+                <span class="lock-icon">🔒</span>
+            </div>
+
+            <div class="quest-btn locked">
+                <span class="btn-text">Week 7-關卡未解鎖</span>
+                <span class="lock-icon">🔒</span>
+            </div>
+
+            <div class="quest-btn locked">
+                <span class="btn-text">Week 8-關卡未解鎖</span>
+                <span class="lock-icon">🔒</span>
+            </div>
+
+            <div class="quest-btn locked">
+                <span class="btn-text">Week 9-關卡未解鎖</span>
+                <span class="lock-icon">🔒</span>
+            </div>
+
+            <div class="quest-btn locked">
+                <span class="btn-text">Week 10-關卡未解鎖</span>
+                <span class="lock-icon">🔒</span>
+            </div>
+
+            <div class="quest-btn locked">
+                <span class="btn-text">Week 11-關卡未解鎖</span>
+                <span class="lock-icon">🔒</span>
+            </div>
+
+            <div class="quest-btn locked">
+                <span class="btn-text">Week 12-關卡未解鎖</span>
+                <span class="lock-icon">🔒</span>
+            </div>
+
+            <div class="quest-btn locked">
+                <span class="btn-text">Week 13-關卡未解鎖</span>
+                <span class="lock-icon">🔒</span>
+            </div>
+
+            <div class="quest-btn locked">
+                <span class="btn-text">Week 14-關卡未解鎖</span>
+                <span class="lock-icon">🔒</span>
+            </div>
+
+            <div class="quest-btn locked">
+                <span class="btn-text">Week 15-關卡未解鎖</span>
+                <span class="lock-icon">🔒</span>
+            </div>
+
+            <div class="quest-btn locked">
+                <span class="btn-text">Week 16-關卡未解鎖</span>
+                <span class="lock-icon">🔒</span>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
