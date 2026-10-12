@@ -1,16 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="./style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pen</title>
-  </head>
-  <body>
-
-    <script src="./script.js"></script>
-  </body>
-</html><!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
@@ -119,7 +107,6 @@
         /* 16 個任務按鈕的 Grid 網格佈局 */
         .btn-grid {
             display: grid;
-            /* 桌機版一列 2~4 個，使用 auto-fit 自動響應式適應 */
             grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
             gap: 20px;
         }
@@ -154,12 +141,16 @@
             cursor: pointer;
         }
 
-        /* 第 2 個已解鎖按鈕換個色彩，增添美式美學多元度 */
+        /* 解鎖按鈕色彩變化 */
         .quest-btn.unlocked.alt-color {
             background-color: #00ff66; /* 螢光毒綠 */
         }
 
-        /* 解鎖按鈕的酷炫 Hover 效果 */
+        .quest-btn.unlocked.pink-color {
+            background-color: #ff66cc; /* 炫彩粉紅 */
+        }
+
+        /* 解鎖按鈕 Hover 效果 */
         .quest-btn.unlocked:hover {
             transform: translateY(-4px);
             box-shadow: 0 10px 0px #000000, 0 0 15px rgba(0, 240, 255, 0.6);
@@ -168,6 +159,12 @@
 
         .quest-btn.unlocked.alt-color:hover {
             box-shadow: 0 10px 0px #000000, 0 0 15px rgba(0, 255, 102, 0.6);
+            background-color: #ffde59;
+        }
+
+        .quest-btn.unlocked.pink-color:hover {
+            box-shadow: 0 10px 0px #000000, 0 0 15px rgba(255, 102, 204, 0.6);
+            background-color: #ffde59;
         }
 
         .quest-btn.unlocked:active {
@@ -225,7 +222,6 @@
             }
 
             .btn-grid {
-                /* 手機版單欄排列，方便大拇指點擊 */
                 grid-template-columns: 1fr;
                 gap: 14px;
             }
@@ -242,11 +238,10 @@
         <!-- 1. 中央個人資訊區塊 -->
         <section class="profile-section">
             <div class="avatar-wrapper">
-                <!-- 預設假圖片 (可自行更換 src 圖片網址) -->
                 <img src="https://i.postimg.cc/QdXmLdsL/9BDF2C02-639E-434F-86D3-260214D3D642-(1).jpg" alt="大頭貼" class="avatar">
                 <span class="badge">LV. 16</span>
             </div>
-            <h1 class="user-name">Yz
+            <h1 class="user-name">Yz</h1>
             <p class="sub-title">Web Dev Quest Portfolio</p>
         </section>
 
@@ -264,12 +259,13 @@
                 <span class="arrow">&rarr;</span>
             </a>
 
-            <!-- 按鈕 3 ~ 16 (未解鎖) -->
-            <div class="quest-btn locked">
-                <span class="btn-text">Week 3-關卡未解鎖</span>
-                <span class="lock-icon">🔒</span>
-            </div>
+            <!-- 按鈕 3 (已解鎖：迷因產生器) -->
+            <a href="w3/index.html" class="quest-btn unlocked pink-color">
+                <span class="btn-text">🤡 Week 3-迷因產生器</span>
+                <span class="arrow">&rarr;</span>
+            </a>
 
+            <!-- 按鈕 4 ~ 16 (未解鎖) -->
             <div class="quest-btn locked">
                 <span class="btn-text">Week 4-關卡未解鎖</span>
                 <span class="lock-icon">🔒</span>
