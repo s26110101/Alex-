@@ -150,6 +150,10 @@
             background-color: #ff66cc; /* 炫彩粉紅 */
         }
 
+        .quest-btn.unlocked.purple-color {
+            background-color: #b19cd9; /* 神秘粉紫（給作業四使用） */
+        }
+
         /* 解鎖按鈕 Hover 效果 */
         .quest-btn.unlocked:hover {
             transform: translateY(-4px);
@@ -164,6 +168,11 @@
 
         .quest-btn.unlocked.pink-color:hover {
             box-shadow: 0 10px 0px #000000, 0 0 15px rgba(255, 102, 204, 0.6);
+            background-color: #ffde59;
+        }
+
+        .quest-btn.unlocked.purple-color:hover {
+            box-shadow: 0 10px 0px #000000, 0 0 15px rgba(177, 156, 217, 0.6);
             background-color: #ffde59;
         }
 
@@ -265,12 +274,13 @@
                 <span class="arrow">&rarr;</span>
             </a>
 
-            <!-- 按鈕 4 ~ 16 (未解鎖) -->
-            <div class="quest-btn locked">
-                <span class="btn-text">Week 4-關卡未解鎖</span>
-                <span class="lock-icon">🔒</span>
-            </div>
+            <!-- 按鈕 4 (已解鎖：悄悄話) -->
+            <a href="w4/index.html" class="quest-btn unlocked purple-color">
+                <span class="btn-text">🤫 Week 4-悄悄話</span>
+                <span class="arrow">&rarr;</span>
+            </a>
 
+            <!-- 按鈕 5 ~ 16 (未解鎖) -->
             <div class="quest-btn locked">
                 <span class="btn-text">Week 5-關卡未解鎖</span>
                 <span class="lock-icon">🔒</span>
