@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個人數位名片</title>
+    <!-- 引入 Font Awesome 圖示庫 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS 樣式直接寫在這裡面 -->
+    <style>
+        /* 重置基礎邊距與設定字體 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+        }
+
+        /* 畫面居中與馬卡龍漸層背景 */
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 50%, #a1c4fd 100%);
+        }
+
+        /* 名片卡片主體 */
+        .profile-card {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 360px;
+            padding: 40px 28px;
+            border-radius: 28px;
+            text-align: center;
+            box-shadow: 0 12px 30px rgba(160, 140, 175, 0.25);
+        }
+
+        /* 圓形大頭貼與白框微陰影 */
+        .avatar-container {
+            margin-bottom: 20px;
+        }
+
+        .avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #ffffff;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 名字與簡介樣式 */
+        .name {
+            font-size: 24px;
+            color: #4a4a4a;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .bio {
+            font-size: 14px;
+            color: #7d7d7d;
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+
+        /* 按鈕群組排版 */
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        /* 按鈕基礎樣式 */
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 20px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        /* Instagram 按鈕：馬卡龍蜜桃粉 */
+        .btn-instagram {
+            background-color: #ffb7c5;
+            color: #5c3a42;
+            box-shadow: 0 4px 12px rgba(255, 183, 197, 0.5);
+        }
+
+        .btn-instagram:hover {
+            background-color: #ffa4b5;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(255, 183, 197, 0.7);
+        }
+
+        /* Email 按鈕：馬卡龍薄霧藍 */
+        .btn-email {
+            background-color: #c7ceea;
+            color: #3b4259;
+            box-shadow: 0 4px 12px rgba(199, 206, 234, 0.5);
+        }
+
+        .btn-email:hover {
+            background-color: #b5bef0;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(199, 206, 234, 0.7);
+        }
+
+        .btn i {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 名片主要內容 -->
+    <div class="profile-card">
+        
+        <!-- 大頭貼照片 -->
+        <div class="avatar-container">
+            <img src="https://i.postimg.cc/9fz8krNj/435B6FFA-E00F-418E-A130-AC1EF4A2C589.jpg" alt="大頭貼" class="avatar">
+        </div>
+
+        <!-- 名字與簡介 -->
+        <h1 class="name">Yz</h1>
+        <p class="bio">🌸 我最好看。</p>
+
+        <!-- 按鈕區域 -->
+        <div class="button-group">
+            <a href="https://www.instagram.com" target="_blank" class="btn btn-instagram">
+                <i class="fa-brands fa-instagram"></i> Instagram
+            </a>
+            
+            <a href="mailto:your-email@example.com" class="btn btn-email">
+                <i class="fa-regular fa-envelope"></i> Email
+            </a>
+        </div>
+
+    </div>
+
+</body>
+</html>
